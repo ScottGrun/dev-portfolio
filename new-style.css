@@ -17,6 +17,13 @@
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
 body {
   background: var(--main-bg-color);
   color: var(--white);
@@ -30,6 +37,12 @@ p {
   font-weight: normal;
   font-size: var(--body-text);
   line-height: 28px;
+}
+
+.sub-header {
+  font-weight: 800;
+  font-size: 48px;
+  margin: 0;
 }
 
 .btn {
@@ -85,6 +98,34 @@ nav {
   position: fixed;
 }
 
+#socials-sidebar {
+  display: none;
+  position: fixed;
+  left: 24px;
+  bottom: 0;
+}
+
+#socials-icon-container {
+  display: flex;
+  flex-flow: column;
+}
+
+#socials-icon-container > img {
+  display: inline-block;
+  padding: 8px 0;
+  transition: all 200ms ease;
+}
+
+#socials-icon-container > img:hover {
+  transform: translateY(-5px);
+}
+
+#vertical-bar {
+  width: 1px;
+  background: white;
+  height: 130px;
+}
+
 /* Landing Page ------------------------------------*/
 #landing-page {
   background-image: linear-gradient(
@@ -113,12 +154,7 @@ nav {
   color: var(--orange);
 }
 
-.sub-header {
-  font-weight: 800;
-  font-size: 48px;
-}
-
-.grid-container {
+.landing-grid-container {
   display: grid;
   align-self: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -156,10 +192,126 @@ nav {
   grid-area: cta-content;
 }
 
+/* Developer Toolkit -------------------------------------- */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: 0.2fr 1fr 0.2fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . . . . . . . . ."
+    ". developer-toolkit developer-toolkit developer-toolkit developer-toolkit . designer-toolkit designer-toolkit designer-toolkit designer-toolkit ."
+    ". . . . . . . . . . .";
+}
+
+.developer-toolkit {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.35fr 0fr 0.18fr 0fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "dev-toolkit-content dev-toolkit-content dev-toolkit-content dev-toolkit-content"
+    "react react node node"
+    "psql psql express express"
+    "javascript javascript css css";
+  grid-area: developer-toolkit;
+}
+
+.dev-toolkit-content {
+  grid-area: dev-toolkit-content;
+}
+
+.toolkit-item {
+  display: flex;
+  align-items: center;
+}
+
+.toolkit-item > div > p {
+  color: var(--orange);
+}
+
+.toolkit-item > img {
+  padding-right: 10px;
+}
+
+.react {
+  grid-area: react;
+}
+
+.psql {
+  grid-area: psql;
+}
+
+.javascript {
+  grid-area: javascript;
+}
+
+.node {
+  grid-area: node;
+}
+
+.express {
+  grid-area: express;
+}
+
+.css {
+  grid-area: css;
+}
+
+.designer-toolkit {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0px 0px;
+  grid-template-areas:
+    "designer-toolkit-content designer-toolkit-content designer-toolkit-content designer-toolkit-content"
+    "figma figma sketch sketch"
+    "marvel marvel zeplin zeplin"
+    "principle principle adobe adobe";
+  grid-area: designer-toolkit;
+}
+
+.designer-toolkit-content {
+  grid-area: designer-toolkit-content;
+}
+
+.figma {
+  grid-area: figma;
+}
+
+.sketch {
+  grid-area: sketch;
+}
+
+.marvel {
+  grid-area: marvel;
+}
+
+.zeplin {
+  grid-area: zeplin;
+}
+
+.principle {
+  grid-area: principle;
+}
+
+.adobe {
+  grid-area: adobe;
+}
+
+/* Media Queries -------------------------------------------- */
 @media (min-width: 768px) {
   :root {
     --mobile-h1: 78px;
     --body-text: 16px;
+  }
+
+  #socials-sidebar {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
   }
 
   #landing-page {
@@ -180,7 +332,7 @@ nav {
     padding: 0 28px;
   }
 
-  .grid-container {
+  .landing-grid-container {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.3fr 0.3fr;
     gap: 36px 24px;
@@ -191,13 +343,13 @@ nav {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1080px) {
   :root {
     --mobile-h1: 76px;
     --body-text: 16px;
   }
 
-  .grid-container {
+  .landing-grid-container {
     align-items: center;
     max-height: 100vh;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -208,6 +360,10 @@ nav {
       ". . . . . . . . . . . ."
       ". cta-content cta-content cta-content cta-content cta-content cta-image-section cta-image-section cta-image-section cta-image-section cta-image-section."
       ". . . . . . . . . . . .";
+  }
+
+  nav {
+    padding: 0 24px;
   }
 }
 
@@ -223,6 +379,12 @@ nav {
   .cta-image-section {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .landing-grid-container {
+    width: 1440px;
+    max-width: 1440px;
+    margin: 0 auto;
   }
 
   .grid-container {
