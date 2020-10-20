@@ -1,5 +1,5 @@
 /* Global */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Source+Code+Pro:wght@600&display=swap");
 
 :root {
   /* Page Colors */
@@ -7,10 +7,12 @@
   --landing-bg-color: #aa3389;
   --orange: #e76555;
   --white: #ffffff;
+  --blue: #56ccf2;
 
   /* Font Sizes */
   --mobile-h1: 58px;
   --body-text: 14px;
+  --sub-header: 34px;
 }
 
 * {
@@ -41,8 +43,22 @@ p {
 
 .sub-header {
   font-weight: 800;
-  font-size: 48px;
+  font-size: var(--sub-header);
   margin: 0;
+
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.border-gradient {
+  border-bottom: solid 6px;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    247.64deg,
+    #ea5c26 0%,
+    #9f30c7 100%,
+    #9f30c7 100%
+  );
 }
 
 .btn {
@@ -52,10 +68,10 @@ p {
   font-size: 14px;
   /* max-width: 212px; */
   border-radius: 4px;
-  padding: 8px 30px;
+  padding: 8px 15px;
   border: none;
   height: 40px;
-  transition: all 100ms ease-in;
+  transition: all 150ms ease-in;
 }
 
 .btn-primary {
@@ -76,8 +92,7 @@ p {
 }
 
 .btn-secondary:hover {
-  color: var(--orange);
-  background-color: #fffffff5;
+  color: var(--white);
   cursor: pointer;
 }
 
@@ -91,8 +106,40 @@ p {
   width: 48%;
 }
 
+.gradient-btn {
+  position: relative;
+  box-sizing: border-box;
+  background: var(--main-bg-color);
+  background-clip: padding-box;
+  /* !importanté */
+  border: solid 2px transparent;
+  /* !importanté */
+}
+.gradient-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -2px;
+  /* !importanté */
+  border-radius: inherit;
+  /* !importanté */
+  background: linear-gradient(
+    247.64deg,
+    #ea5c26 0%,
+    #9f30c7 100%,
+    #9f30c7 100%
+  );
+}
+.gradient-btn:hover {
+  background: rgba(0, 0, 0, 0);
+}
+
 nav {
-  padding: 0 16px;
+  padding: 16px;
   background-color: transparent;
   z-index: 9;
   position: fixed;
@@ -126,6 +173,14 @@ nav {
   height: 130px;
 }
 
+.section-header {
+  font-family: Inter;
+  font-weight: 800;
+  font-size: 64px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
 /* Landing Page ------------------------------------*/
 #landing-page {
   background-image: linear-gradient(
@@ -148,6 +203,11 @@ nav {
   font-size: var(--mobile-h1);
   margin: 0;
   line-height: 100%;
+}
+
+.cta-content > p {
+  margin-top: 10px;
+  margin-bottom: 18px;
 }
 
 #cta-title > span {
@@ -194,27 +254,32 @@ nav {
 
 /* Developer Toolkit -------------------------------------- */
 
-.grid-container {
+#developer-toolkit {
+  margin-top: 32px;
+  margin-bottom: 64px;
+}
+
+.developer-designer-toolkits {
+  margin: 0 16px;
   display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: 0.2fr 1fr 0.2fr;
-  gap: 0px 0px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 16px;
   grid-template-areas:
-    ". . . . . . . . . . ."
-    ". developer-toolkit developer-toolkit developer-toolkit developer-toolkit . designer-toolkit designer-toolkit designer-toolkit designer-toolkit ."
-    ". . . . . . . . . . .";
+    "developer-toolkit developer-toolkit developer-toolkit developer-toolkit"
+    "designer-toolkit designer-toolkit designer-toolkit designer-toolkit";
 }
 
 .developer-toolkit {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 0.35fr 0fr 0.18fr 0fr;
-  gap: 0px 0px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  gap: 16px 16px;
   grid-template-areas:
     "dev-toolkit-content dev-toolkit-content dev-toolkit-content dev-toolkit-content"
-    "react react node node"
-    "psql psql express express"
-    "javascript javascript css css";
+    "react react css css"
+    "node node express express"
+    "javascript javascript postgres postgres";
   grid-area: developer-toolkit;
 }
 
@@ -222,29 +287,12 @@ nav {
   grid-area: dev-toolkit-content;
 }
 
-.toolkit-item {
-  display: flex;
-  align-items: center;
-}
-
-.toolkit-item > div > p {
-  color: var(--orange);
-}
-
-.toolkit-item > img {
-  padding-right: 10px;
-}
-
 .react {
   grid-area: react;
 }
 
-.psql {
-  grid-area: psql;
-}
-
-.javascript {
-  grid-area: javascript;
+.css {
+  grid-area: css;
 }
 
 .node {
@@ -255,15 +303,20 @@ nav {
   grid-area: express;
 }
 
-.css {
-  grid-area: css;
+.javascript {
+  grid-area: javascript;
+}
+
+.postgres {
+  grid-area: postgres;
 }
 
 .designer-toolkit {
+  margin-top: 32px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 0px 0px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  gap: 16px 16px;
   grid-template-areas:
     "designer-toolkit-content designer-toolkit-content designer-toolkit-content designer-toolkit-content"
     "figma figma sketch sketch"
@@ -300,10 +353,93 @@ nav {
   grid-area: adobe;
 }
 
+.toolkit-item {
+  display: flex;
+  align-items: center;
+}
+
+.toolkit-item > div > p {
+  color: var(--blue);
+}
+
+.toolkit-item > img {
+  padding-right: 10px;
+  height: 45px;
+  max-width: 55px;
+}
+
+.long-version {
+  display: none;
+}
+
+/* My Work Section ------------------------------------------- */
+#my-work {
+  margin: 0 16px;
+  margin-top: 32px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 0px 15px;
+  grid-template-areas:
+    "project-moodify project-moodify project-moodify project-moodify"
+    "img-moodify img-moodify img-moodify img-moodify"
+    "project-galileo project-galileo project-galileo project-galileo"
+    "img-galileo img-galileo img-galileo img-galileo"
+    ". . . .";
+}
+
+.project-moodify {
+  grid-area: project-moodify;
+}
+
+.img-moodify {
+  grid-area: img-moodify;
+}
+
+.project-galileo {
+  grid-area: project-galileo;
+}
+
+.img-galileo {
+  grid-area: img-galileo;
+}
+
+.my-role {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--orange);
+}
+
+.technologies-used {
+  font-family: Source Code Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  display: none;
+}
+
+.project-desc {
+  padding-bottom: 8px;
+}
+
+.project-title {
+  font-weight: 800;
+  font-size: var(--sub-header);
+  margin: 0;
+  display: inline-block;
+}
+
+.project-img {
+  width: 100%;
+}
+
 /* Media Queries -------------------------------------------- */
 @media (min-width: 768px) {
   :root {
     --mobile-h1: 78px;
+    -sub-header: 34px;
     --body-text: 16px;
   }
 
@@ -317,6 +453,7 @@ nav {
   #landing-page {
     background-image: none;
     background-color: var(--main-bg-color);
+    margin: 0 16px;
   }
 
   .cta-image-section {
@@ -328,18 +465,73 @@ nav {
     display: block;
   }
 
-  .cta-content {
-    padding: 0 28px;
-  }
-
   .landing-grid-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 0.3fr 0.3fr;
     gap: 36px 24px;
-    margin: 0 16px;
     grid-template-areas:
       ". cta-image-section cta-image-section cta-image-section cta-image-section cta-image-section cta-image-section ."
       ". cta-content cta-content cta-content cta-content cta-content cta-content .";
+  }
+
+  .designer-toolkit {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto auto auto;
+    gap: 16px 16px;
+    grid-template-areas:
+      "designer-toolkit-content designer-toolkit-content designer-toolkit-content designer-toolkit-content"
+      "figma figma sketch sketch"
+      "marvel marvel zeplin zeplin"
+      "principle principle adobe adobe";
+    grid-area: designer-toolkit;
+  }
+
+  .developer-designer-toolkits {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 16px;
+    grid-template-areas:
+      ". developer-toolkit developer-toolkit developer-toolkit developer-toolkit developer-toolkit developer-toolkit ."
+      ". designer-toolkit designer-toolkit designer-toolkit designer-toolkit designer-toolkit designer-toolkit .";
+  }
+
+  .toolkit-item > div > h3 {
+    font-size: 22px;
+  }
+
+  .sub-header {
+    margin-bottom: 20px;
+  }
+
+  .border-gradient {
+    border-bottom: solid 8px;
+  }
+
+  .long-version {
+    display: inline-block;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0px 15px;
+    grid-template-areas:
+      ". project-moodify project-moodify project-moodify project-moodify project-moodify project-moodify"
+      ". img-moodify img-moodify img-moodify img-moodify img-moodify img-moodify";
+  }
+
+  .project-moodify {
+    margin-bottom: 32px;
+  }
+
+  .section-header {
+    font-size: 64px;
+    margin-left: 16px;
+    margin-bottom: 32px;
   }
 }
 
@@ -347,6 +539,7 @@ nav {
   :root {
     --mobile-h1: 76px;
     --body-text: 16px;
+    --sub-header: 48px;
   }
 
   .landing-grid-container {
@@ -355,7 +548,6 @@ nav {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 0px 16px;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
       ". . . . . . . . . . . ."
       ". cta-content cta-content cta-content cta-content cta-content cta-image-section cta-image-section cta-image-section cta-image-section cta-image-section."
@@ -363,7 +555,62 @@ nav {
   }
 
   nav {
-    padding: 0 24px;
+    padding: 24px;
+  }
+
+  .developer-designer-toolkits {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 0px 16px;
+    grid-template-areas: ". developer-toolkit developer-toolkit developer-toolkit developer-toolkit . . designer-toolkit designer-toolkit designer-toolkit designer-toolkit .";
+  }
+
+  .designer-toolkit {
+    margin: 0;
+  }
+
+  #developer-toolkit {
+    max-width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 64px;
+  }
+
+  #my-work {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .grid-container {
+    align-items: center;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 0px 24px;
+    grid-template-areas: ". project-moodify project-moodify project-moodify project-moodify project-moodify  img-moodify img-moodify img-moodify img-moodify img-moodify img-moodify .";
+  }
+
+  .project-moodify {
+    margin-bottom: 0;
+  }
+
+  .technologies-used {
+    display: block;
+  }
+
+  .project-desc {
+    margin-right: 120px;
+  }
+
+  .project-btn-container {
+    padding-right: 120px;
+  }
+
+  .section-header {
+    font-size: 64px;
+    margin-left: 5rem;
+    margin-bottom: 32px;
   }
 }
 
@@ -381,15 +628,23 @@ nav {
     justify-content: flex-end;
   }
 
-  .landing-grid-container {
+  #landing-page {
     width: 1440px;
     max-width: 1440px;
     margin: 0 auto;
   }
 
-  .grid-container {
+  .developer-designer-toolkits {
     width: 1440px;
     max-width: 1440px;
     margin: 0 auto;
+  }
+
+  .developer-toolkit {
+    padding: 0;
+  }
+
+  .designer-toolkit {
+    padding: 0;
   }
 }
