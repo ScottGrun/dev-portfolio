@@ -5,7 +5,7 @@
   /* Page Colors */
   --main-bg-color: #15151b;
   --landing-bg-color: #aa3389;
-  --orange: #FF8559;
+  --orange: #ff8559;
   --white: #ffffff;
   --blue: #56ccf2;
 
@@ -15,8 +15,27 @@
   --sub-header: 34px;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -39,6 +58,11 @@ p {
   font-weight: normal;
   font-size: var(--body-text);
   line-height: 28px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .sub-header {
@@ -72,6 +96,9 @@ p {
   border: none;
   height: 40px;
   transition: all 150ms ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-primary {
@@ -87,8 +114,7 @@ p {
 
 .btn-secondary {
   color: var(--white);
-  border: 2px solid var(--orange);
-  background-color: transparent;
+  border: 2px solid white;
 }
 
 .btn-secondary:hover {
@@ -102,7 +128,7 @@ p {
   justify-content: space-between;
 }
 
-.btn-container > button {
+.btn-container > a {
   width: 48%;
 }
 
@@ -138,11 +164,82 @@ p {
   background: rgba(0, 0, 0, 0);
 }
 
+.contact-btn {
+  margin-top: 10px;
+  width: 100%;
+}
+
 nav {
   padding: 16px;
   background-color: transparent;
   z-index: 9;
   position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.open-menu {
+  z-index: 10;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--main-bg-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  padding-right: 40px;
+  height: 0% !important;
+  transition: height 450ms, opacity 250ms, visibility 0s 300ms ease;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 300ms;
+  height: 100%;
+}
+
+.nav-item {
+  margin: 12px 0;
+  font-weight: 700;
+  font-size: 46px;
+  transition: color 250ms ease;
+}
+
+.nav-item:hover {
+  color: var(--orange);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+#close-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 #socials-sidebar {
@@ -193,7 +290,7 @@ nav {
   background-size: contain;
   display: flex;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--landing-bg-color);
   align-content: flex-end;
 }
@@ -217,7 +314,7 @@ nav {
 .landing-grid-container {
   display: grid;
   align-self: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 1fr;
   gap: 0px 16px;
   margin: 0 16px;
@@ -262,7 +359,7 @@ nav {
 .developer-designer-toolkits {
   margin: 0 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 1fr;
   gap: 0px 16px;
   grid-template-areas:
@@ -272,7 +369,7 @@ nav {
 
 .developer-toolkit {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto auto auto;
   gap: 16px 16px;
   grid-template-areas:
@@ -314,7 +411,7 @@ nav {
 .designer-toolkit {
   margin-top: 32px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto auto auto;
   gap: 16px 16px;
   grid-template-areas:
@@ -372,29 +469,35 @@ nav {
   display: none;
 }
 
+.img-moodify {
+  margin-bottom: 50px;
+}
+
 /* My Work Section ------------------------------------------- */
 #my-work {
   margin: 0 16px;
-  margin-top: 32px;
+  margin-top: 64px;
 }
-.grid-container {
+.my-work-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows:auto auto auto auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto auto auto auto;
   gap: 0px 15px;
   grid-template-areas:
+    "work-header work-header work-header work-header"
     "project-moodify project-moodify project-moodify project-moodify"
     "img-moodify img-moodify img-moodify img-moodify"
     "project-galileo project-galileo project-galileo project-galileo"
-    "img-galileo img-galileo img-galileo img-galileo"
-    ". . . .";
+    "img-galileo img-galileo img-galileo img-galileo";
+}
+
+.work-header {
+  grid-area: work-header;
 }
 
 .project-moodify {
   grid-area: project-moodify;
 }
-
-
 
 .img-moodify {
   grid-area: img-moodify;
@@ -437,12 +540,79 @@ nav {
   width: 100%;
 }
 
+/* Contact Me */
+#contact {
+  margin: 0 16px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0px 16px;
+  grid-template-areas:
+    "contact-header-section contact-header-section contact-header-section contact-header-section"
+    "contact-text-section contact-text-section contact-text-section contact-text-section"
+    ". contact-btn-section contact-btn-section .";
+}
+
+.contact-header-section {
+  text-align: center;
+  grid-area: contact-header-section;
+  font-weight: 800;
+  font-size: 34px;
+  text-align: center;
+  padding: 10px;
+}
+
+.contact-text-section {
+  text-align: center;
+  grid-area: contact-text-section;
+}
+
+.contact-btn-section {
+  grid-area: contact-btn-section;
+}
+
+.contact-blurb {
+  grid-area: contact-blurb;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#contact-cta {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.break {
+  display: block;
+}
+
+#contact-text {
+  width: 40%;
+}
+
 /* Media Queries -------------------------------------------- */
 @media (min-width: 768px) {
   :root {
     --mobile-h1: 78px;
     -sub-header: 34px;
     --body-text: 16px;
+  }
+
+  .nav-item {
+    font-size: 72px;
+  }
+
+  .open-menu {
+    text-align: center;
+    justify-content: center;
   }
 
   #socials-sidebar {
@@ -479,7 +649,7 @@ nav {
   .designer-toolkit {
     margin-top: 32px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4 1fr);
     grid-template-rows: 1fr auto auto auto;
     gap: 16px 16px;
     grid-template-areas:
@@ -516,12 +686,13 @@ nav {
     display: inline-block;
   }
 
-  .grid-container {
+  .my-work-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
-    gap: 0px 15px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto auto auto auto auto;
+    gap: 0px 16px;
     grid-template-areas:
+      ". work-header work-header work-header work-header . . "
       ". project-moodify project-moodify project-moodify project-moodify project-moodify project-moodify"
       ". img-moodify img-moodify img-moodify img-moodify img-moodify img-moodify"
       ". project-galileo project-galileo project-galileo project-galileo project-galileo project-galileo"
@@ -534,14 +705,36 @@ nav {
 
   .section-header {
     font-size: 64px;
-    margin-left: 16px;
     margin-bottom: 32px;
   }
+
+  .contact-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0px 16px;
+    grid-template-areas:
+      ". . . . . . . ."
+      ". .contact-blurb contact-blurb contact-blurb contact-blurb . ."
+      ". . . . . . . .";
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas:
+      ". contact-header-section  contact-header-section  contact-header-section  contact-header-section  contact-header-section  contact-header-section."
+      ". . contact-text-section contact-text-section contact-text-section contact-text-section . ."
+      ". . . contact-btn-section contact-btn-section . . .";
+  }
+
+  .contact-header-section {
+    font-size: 56px;
+  }
 }
-
+/* Large Desktops */
 @media (min-width: 1080px) {
-
-  .pad-s-right{
+  .break {
+    display: none;
+  }
+  .pad-s-right {
     padding-right: 50px;
   }
 
@@ -554,9 +747,10 @@ nav {
   .landing-grid-container {
     align-items: center;
     max-height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr;
-    gap: 0px 16px;
+    gap: 0px 24px;
+    margin: 0 auto;
     grid-template-areas:
       ". . . . . . . . . . . ."
       ". cta-content cta-content cta-content cta-content cta-content cta-image-section cta-image-section cta-image-section cta-image-section cta-image-section."
@@ -565,6 +759,11 @@ nav {
 
   nav {
     padding: 24px;
+  }
+
+  #close-icon {
+    top: 24px;
+    right: 24px;
   }
 
   .developer-designer-toolkits {
@@ -588,40 +787,68 @@ nav {
   #my-work {
     max-width: 1440px;
     margin: 0 auto;
+    margin-top: 140px;
   }
 
-  .grid-container {
+  .my-work-grid {
     align-items: center;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 128px 24px;
-    grid-template-areas: ". project-moodify project-moodify project-moodify project-moodify project-moodify img-moodify  img-moodify img-moodify img-moodify img-moodify . ."
-                        ".  img-galileo img-galileo img-galileo img-galileo img-galileo .  project-galileo project-galileo project-galileo project-galileo . .";
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 0 24px;
+    grid-template-areas:
+      ". work-header work-header work-header . . . . . . . ."
+      ". project-moodify project-moodify project-moodify project-moodify  img-moodify img-moodify img-moodify img-moodify img-moodify img-moodify . "
+      ".  img-galileo img-galileo img-galileo img-galileo img-galileo img-galileo project-galileo project-galileo project-galileo project-galileo . ";
   }
 
   .project-moodify {
-    margin-bottom: 0;
+    margin-bottom: 110px;
+  }
+
+  .img-moodify {
+    margin-bottom: 110px;
   }
 
   .technologies-used {
     display: block;
   }
 
-
-
-  .pad-right{
-    padding-right: 125px;
+  .pad-right {
+    padding-right: 50px;
+  }
+  .pad-left {
+    padding-left: 50px;
   }
 
-  .project-btn-container{
+  .project-btn-container {
     padding-top: 10px;
   }
 
-  
+  .contact-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0px 24px;
+    grid-template-areas:
+      ". . . . . . . . . . . ."
+      ". . contact-blurb contact-blurb contact-blurb contact-blurb contact-blurb contact-blurb contact-blurb contact-blurb . ."
+      ". . . . . . . . . . . .";
+  }
+
+  #contact-cta {
+    font-size: var(--mobile-h1);
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+      ". .  contact-header-section contact-header-section  contact-header-section  contact-header-section  contact-header-section  contact-header-section  contact-header-section  contact-header-section . ."
+      ". . . . contact-text-section contact-text-section contact-text-section contact-text-section . . . ."
+      ". . . . . contact-btn-section  contact-btn-section . . . . .";
+  }
 }
 
+/* XL Desktops */
 @media (min-width: 1440px) {
   #cta-image-outline {
     position: absolute;

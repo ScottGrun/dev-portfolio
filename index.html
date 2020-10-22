@@ -14,6 +14,20 @@
   <body>
     <nav>
       <h2>Scott.</h2>
+      <button id="menu">
+        <img src="./img/icons/menu-outline.svg" />
+      </button>
+      <div class="open-menu">
+        <button id="close-icon">
+          <img src="./img/icons/close-icon.svg" />
+        </button>
+        <ul>
+          <li class="nav-item"><a href="#landing-page"> Home </a></li>
+          <li class="nav-item"><a href="#developer-toolkit">Tools</a></li>
+          <li class="nav-item"><a href="#my-work">Work</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div id="socials-sidebar">
@@ -31,33 +45,48 @@
           <img id="cta-image-outline" src="img/color-outline.svg" />
           <img class="cta-image" src="./img/landing-img.jpg" />
         </div>
+
         <div class="cta-content">
           <h1 id="cta-title">
             Developer <span>/</span><br />
             Designer
           </h1>
           <p class="pad-s-right">
-            Proident cupidatat anim enim culpa nulla minim commodo eu exercitation. In do irure
-            veniam ipsum adipisicing culpa id ipsum pariatur ullamco aliqua. Est nulla aute Lorem
-            minim deserunt ex velit sint.
+            Proident cupidatat anim enim culpa nulla minim commodo eu
+            exercitation. In do irure veniam ipsum adipisicing culpa id ipsum
+            pariatur ullamco aliqua. Est nulla aute Lorem minim deserunt ex
+            velit sint.
           </p>
+
           <div class="btn-container pad-s-right">
-            <button class="btn btn-primary">See My Work</button>
-            <button class="btn btn-secondary">View Resume</button>
+            <a class="btn btn-primary" href="#my-work"> See My Work </a>
+
+            <a
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://app.enhancv.com/share/98946ac0?utm_medium=growth&utm_campaign=share-resume&utm_source=dynamic"
+            >
+              View Resume
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Toolkit Section -->
     <section id="developer-toolkit">
       <div class="developer-designer-toolkits">
         <div class="developer-toolkit">
           <div class="dev-toolkit-content">
-            <h2 class="sub-header"><span class="border-gradient">Developer</span> Toolkit</h2>
+            <h2 class="sub-header">
+              <span class="border-gradient">Developer</span> Toolkit
+            </h2>
             <p>
-              Proident cupidatat anim enim culpa nulla minim commodo eu exercitation. In do irure
-              veniam ipsum adipisicing culpa id ipsum pariatur ullamco aliqua. Est nulla aute Lorem
-              minim deserunt ex velit sint.
+              Proident cupidatat anim enim culpa nulla minim commodo eu
+              exercitation. In do irure veniam ipsum adipisicing culpa id ipsum
+              pariatur ullamco aliqua. Est nulla aute Lorem minim deserunt ex
+              velit sint.
             </p>
           </div>
           <div class="react toolkit-item">
@@ -106,11 +135,14 @@
 
         <div class="designer-toolkit">
           <div class="designer-toolkit-content">
-            <h2 class="sub-header"><span class="border-gradient">Designer</span> Toolkit</h2>
+            <h2 class="sub-header">
+              <span class="border-gradient">Designer</span> Toolkit
+            </h2>
             <p>
-              Proident cupidatat anim enim culpa nulla minim commodo eu exercitation. In do irure
-              veniam ipsum adipisicing culpa id ipsum pariatur ullamco aliqua. Est nulla aute Lorem
-              minim deserunt ex velit sint .
+              Proident cupidatat anim enim culpa nulla minim commodo eu
+              exercitation. In do irure veniam ipsum adipisicing culpa id ipsum
+              pariatur ullamco aliqua. Est nulla aute Lorem minim deserunt ex
+              velit sint .
             </p>
           </div>
           <div class="figma toolkit-item">
@@ -159,35 +191,41 @@
       </div>
     </section>
 
+    <!-- My Works Section -->
     <section id="my-work">
-      <div class="grid-container">
+      <div class="my-work-grid">
+        <h2 class="work-header section-header">My Work</h2>
         <div class="project-moodify">
           <p class="my-role">UX Designer / Full Stack Developer</p>
           <h3 class="project-title">Moodify</h3>
-          <p class="technologies-used">Node.js - Express - React - Styled Components - Postgres</p>
+          <p class="technologies-used">
+            Node.js - React - Styled Components - Postgres
+          </p>
           <p class="project-desc pad-right">
-            Proident cupidatat anim enim culpa nulla minim commodo eu exercitation.Est nulla aute
-            Lorem minim deserunt ex velit sint anim enim culpa nulla minim.
+            Proident cupidatat anim enim culpa nulla minim commodo eu
+            exercitation.Est nulla aute Lorem minim deserunt ex velit sint anim
+            enim culpa nulla minim.
           </p>
           <div class="btn-container project-btn-container pad-right">
-            <button class="btn btn-secondary gradient-btn">View Live Project</button>
-            <button class="btn btn-secondary gradient-btn">View Git Repo</button>
+            <a class="btn btn-secondary gradient-btn"> View Live Project </a>
+            <a class="btn btn-secondary gradient-btn"> View Git Repo </a>
           </div>
         </div>
         <div class="img-moodify">
           <img class="project-img" src="./img/moodify-img.png" />
         </div>
-        <div class="project-galileo">
+        <div class="project-galileo pad-left">
           <p class="my-role">UX Designer / Frontend Developer</p>
           <h3 class="project-title">Project Galileo</h3>
           <p class="technologies-used">React - Styled Components - Axios</p>
-          <p class="project-desc">
-            Proident cupidatat anim enim culpa nulla minim commodo eu exercitation.Est nulla aute
-            Lorem minim deserunt ex velit sintanim enim culpa nulla minim.
+          <p class="project-desc pad">
+            Proident cupidatat anim enim culpa nulla minim commodo eu
+            exercitation.Est nulla aute Lorem minim deserunt ex velit sintanim
+            enim culpa nulla minim.
           </p>
           <div class="btn-container project-btn-container">
-            <button class="btn btn-secondary gradient-btn">View Live Project</button>
-            <button class="btn btn-secondary gradient-btn">View Git Repo</button>
+            <a class="btn btn-secondary gradient-btn"> View Live Project </a>
+            <a class="btn btn-secondary gradient-btn"> View Git Repo </a>
           </div>
         </div>
         <div class="img-galileo">
@@ -195,5 +233,29 @@
         </div>
       </div>
     </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="contact-grid">
+        <div class="contact-header-section">
+          <h2>
+            Let’s Build<br class="break" />
+            Cool Things.
+          </h2>
+        </div>
+        <div class="contact-text-section">
+          <p>
+            Proident cupidatat anim enim culpa nulla minim commodo eu
+            exercitation.Est nulla aute Lorem minim deserunt ex velit sint.
+          </p>
+        </div>
+        <div class="contact-btn-section">
+          <button class="btn btn-secondary gradient-btn contact-btn">
+            Get In Touch :)
+          </button>
+        </div>
+      </div>
+    </section>
+    <script src="./scripts/nav.js"></script>
   </body>
 </html>
