@@ -515,6 +515,7 @@ ul {
   font-weight: 500;
   font-size: 16px;
   color: var(--orange);
+  margin-bottom: 5px;
 }
 
 .technologies-used {
@@ -526,7 +527,7 @@ ul {
 }
 
 .project-desc {
-  padding-bottom: 8px;
+  margin-bottom: 25px;
 }
 
 .project-title {
@@ -534,6 +535,7 @@ ul {
   font-size: var(--sub-header);
   margin: 0;
   display: inline-block;
+  margin-bottom: 10px;
 }
 
 .project-img {
@@ -813,6 +815,7 @@ ul {
 
   .technologies-used {
     display: block;
+    margin-bottom: 10px;
   }
 
   .pad-right {
