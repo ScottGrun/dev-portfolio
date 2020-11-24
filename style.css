@@ -518,12 +518,29 @@ ul {
   margin-bottom: 5px;
 }
 
-.technologies-used {
+.technologies-used{
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.technology-used{
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.technology-name {
   font-family: Source Code Pro;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   display: none;
+}
+
+.technology-icon{
+  height: 22px;
+  padding-right: 6px;
 }
 
 .project-desc {
@@ -813,8 +830,12 @@ ul {
     margin-bottom: 110px;
   }
 
-  .technologies-used {
+  .technology-name{
     display: block;
+  }
+
+  .technologies-used{
+    display: flex;
     margin-bottom: 10px;
   }
 
